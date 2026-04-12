@@ -48,10 +48,12 @@ router.post('/register', async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        avatar: user.avatar || '',
         token
       }
     });
   } catch (error) {
+    console.error('POST /register error:', error);
     res.status(500).json({
       success: false,
       message: 'Server error',
@@ -103,10 +105,12 @@ router.post('/login', async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        avatar: user.avatar || '',
         token
       }
     });
   } catch (error) {
+    console.error('POST /login error:', error);
     res.status(500).json({
       success: false,
       message: 'Server error',
@@ -126,13 +130,16 @@ router.get('/me', protect, async (req, res) => {
         id: req.user._id,
         name: req.user.name,
         email: req.user.email,
+        avatar: req.user.avatar || '',
         createdAt: req.user.createdAt
       }
     });
   } catch (error) {
+    console.error('GET /me error:', error);
     res.status(500).json({
       success: false,
-      message: 'Server error'
+      message: 'Server error',
+      error: error.message
     });
   }
 });
