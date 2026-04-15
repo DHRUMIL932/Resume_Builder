@@ -1,0 +1,79 @@
+/* ── Base ────────────────────────────────────────────────────────── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.loading { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f8fafc; }
+.loading-content { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.loading-text { font-size: 16px; color: #64748b; }
+
+/* ── Toast ───────────────────────────────────────────────────────── */
+.toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
+.toast { padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: 500; box-shadow: 0 4px 20px rgba(0,0,0,0.15); animation: slideIn 0.3s ease; }
+.toast--success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+.toast--error   { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+@keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+/* ── Navbar ──────────────────────────────────────────────────────── */
+.navbar { background: #1e2761; padding: 0 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 100; }
+.nav-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 62px; }
+.navbar h1 { color: #fff; font-size: 20px; font-weight: 700; }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.nav-link { color: #c7d2fe; text-decoration: none; font-size: 14px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: background 0.2s; }
+.nav-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.user-name { color: #e0e7ff; font-size: 14px; }
+.btn-logout { background: transparent; border: 1px solid rgba(255,255,255,0.3); color: #e0e7ff; padding: 6px 14px; border-radius: 8px; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+.btn-logout:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+/* ── Page ────────────────────────────────────────────────────────── */
+.dashboard-container { min-height: 100vh; background: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+.dashboard-content { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+/* ── Welcome ─────────────────────────────────────────────────────── */
+.welcome-section { margin-bottom: 28px; }
+.welcome-section h2 { font-size: 26px; font-weight: 700; color: #0f172a; }
+.account-date { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+
+/* ── Cards ───────────────────────────────────────────────────────── */
+.action-section { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; }
+@media (max-width: 820px) { .action-section { grid-template-columns: 1fr; } }
+
+.card { background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); border: 1px solid #e2e8f0; }
+.card h3 { font-size: 17px; font-weight: 700; color: #0f172a; margin-bottom: 10px; }
+.card p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+
+.btn-primary-dash { width: 100%; padding: 12px; background: linear-gradient(135deg, #1e2761 0%, #0d9488 100%); color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.1s; }
+.btn-primary-dash:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary-dash:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ── Resume list header ──────────────────────────────────────────── */
+.resume-list-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.resume-list-header h3 { font-size: 17px; font-weight: 700; color: #0f172a; }
+.resume-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.filter-input, .filter-select { padding: 7px 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; color: #0f172a; background: #f8fafc; outline: none; }
+.filter-input:focus, .filter-select:focus { border-color: #0d9488; box-shadow: 0 0 0 3px rgba(13,148,136,0.1); }
+
+/* ── Empty state ─────────────────────────────────────────────────── */
+.empty-state { padding: 36px 0; text-align: center; color: #94a3b8; font-size: 15px; }
+
+/* ── Resume rows ─────────────────────────────────────────────────── */
+.resume-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.resume-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; border: 1px solid #e2e8f0; border-radius: 12px; background: #f8fafc; transition: border-color 0.2s, box-shadow 0.2s; gap: 12px; }
+.resume-row:hover { border-color: #0d9488; box-shadow: 0 2px 12px rgba(13,148,136,0.08); }
+.resume-row-main { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.resume-title { font-size: 15px; font-weight: 600; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.resume-meta { font-size: 12px; color: #94a3b8; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.template-badge { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 20px; }
+.template-badge--classic   { background: #dbeafe; color: #1e40af; }
+.template-badge--modern    { background: #ccfbf1; color: #065f46; }
+.template-badge--minimal   { background: #f1f5f9; color: #475569; }
+.template-badge--twocolumn { background: #ede9fe; color: #5b21b6; }
+
+.resume-row-actions { display: flex; gap: 6px; flex-shrink: 0; flex-wrap: wrap; }
+.btn-link { background: none; border: 1px solid #e2e8f0; border-radius: 8px; color: #475569; font-size: 13px; font-weight: 500; padding: 6px 11px; cursor: pointer; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+.btn-link:hover { background: #f1f5f9; border-color: #cbd5e1; color: #0f172a; }
+.btn-link--danger { color: #dc2626; border-color: #fecaca; }
+.btn-link--danger:hover { background: #fef2f2; border-color: #f87171; }
+
+/* ── Spinner ─────────────────────────────────────────────────────── */
+.spinner { width: 36px; height: 36px; border: 3px solid #e2e8f0; border-top-color: #0d9488; border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
